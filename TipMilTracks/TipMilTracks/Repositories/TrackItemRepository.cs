@@ -46,6 +46,7 @@ namespace TipMilTracks.Repositories
         {
             await CreateConnection();
             await _connection.DeleteAsync(item);
+            OnItemDeleted?.Invoke(this, item);
         }
 
         public async Task<List<TrackItemModel>> GetItems()
@@ -58,12 +59,14 @@ namespace TipMilTracks.Repositories
         {
             await CreateConnection();
             await _connection.InsertAsync(item);
+            OnItemAdded?.Invoke(this, item);
         }
 
         public async Task UpdateItem(TrackItemModel item)
         {
             await CreateConnection();
             await _connection.UpdateAsync(item);
+            OnItemUpdated?.Invoke(this, item);
         }
 
         public async Task<TrackItemModel> GetItem(TrackItemModel item)
