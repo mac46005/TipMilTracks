@@ -11,8 +11,9 @@ namespace TipMilTracks.Repositories
         event EventHandler<T> OnItemUpdated;
         event EventHandler<T> OnItemDeleted;
 
+        Task<T> GetItem(T item);
         Task<List<T>> GetItems();
-        Task SaveItem(T item);
+        Task AddItem(T item);
         Task UpdateItem(T item);
         Task AddOrUpdateItem(T item);
         Task DeleteItem(T item);

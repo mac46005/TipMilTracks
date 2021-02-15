@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +10,7 @@ namespace TipMilTracks.Models
         /// <summary>
         /// Primary Key
         /// </summary>
+        [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
         /// <summary>
         /// Decimal value of the item type
