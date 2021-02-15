@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TipMilTracks.Android", "TipMilTracks\TipMilTracks.Android\TipMilTracks.Android.csproj", "{A43CA58C-BCF7-47E3-B862-08E298F9C472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TipMilTracks", "TipMilTracks\TipMilTracks\TipMilTracks.csproj", "{F4B9FC02-F683-4A45-9D84-B717D3512D07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A43CA58C-BCF7-47E3-B862-08E298F9C472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43CA58C-BCF7-47E3-B862-08E298F9C472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43CA58C-BCF7-47E3-B862-08E298F9C472}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A43CA58C-BCF7-47E3-B862-08E298F9C472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43CA58C-BCF7-47E3-B862-08E298F9C472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A43CA58C-BCF7-47E3-B862-08E298F9C472}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F4B9FC02-F683-4A45-9D84-B717D3512D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B9FC02-F683-4A45-9D84-B717D3512D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B9FC02-F683-4A45-9D84-B717D3512D07}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F4B9FC02-F683-4A45-9D84-B717D3512D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B9FC02-F683-4A45-9D84-B717D3512D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B9FC02-F683-4A45-9D84-B717D3512D07}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {768D5C5E-7773-4240-BA20-296FF86F02AA}
+	EndGlobalSection
+EndGlobal
