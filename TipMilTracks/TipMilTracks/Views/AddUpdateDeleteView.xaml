@@ -5,9 +5,7 @@
              x:Class="TipMilTracks.Views.AddUpdateDeleteView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="New Item Add Update delete"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="New Item Add Update delete"/>
             <Label Text="Item Type"/>
             <Picker>
                 <Picker.Items>
@@ -17,6 +15,8 @@
             </Picker>
             <Label Text="Value Amount"/>
             <Entry/>
+            <Label Text="Date"/>
+            <DatePicker/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

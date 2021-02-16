@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using Xamarin.Forms;
 using TipMilTracks.ModelViews;
+using TipMilTracks.Repositories;
 
 namespace TipMilTracks
 {
@@ -31,10 +32,12 @@ namespace TipMilTracks
             {
                 ContainerBuilder.RegisterType(type.AsType());
             };
+            ContainerBuilder.RegisterType<TrackItemRepository>().SingleInstance();
         }
         private void FinishInitialization()
         {
-            throw new NotImplementedException();
+            var container = ContainerBuilder.Build();
+            Resolver.Initialize(container);
         }
     }
 }

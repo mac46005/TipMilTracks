@@ -4,22 +4,45 @@
              xmlns:local="clr-namespace:TipMilTracks"
              x:Class="TipMilTracks.Views.MainView"
              Title="TipMilTracks">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="20"/>
+            <Setter Property="HorizontalTextAlignment"
+                    Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalOptions"
+                    Value="Center"/>
+        </Style>
+        <Style x:Key="Values" TargetType="Label">
+            <Setter Property="FontAttributes"
+                    Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"/>
+        <ToolbarItem Text="Add" Command="{Binding AUD_Item}"/>
     </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Text="2021"/>
-        <Label Grid.Row="1" Text="Total:"/>
-        <Label Grid.Row="1" Text="$53.520"/>
-        <Label Grid.Row="1" Text="Miles:"/>
-        <Label Grid.Row="1" Text="56.23 m"/>
-        <Button Text="Toggle"/>
-        <ListView/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="{Binding CurrentDate}" Grid.ColumnSpan="4"/>
+        <Label Grid.Row="1" Grid.Column="0" Text="Total:"/>
+        <Label Grid.Row="1" Grid.Column="1" Text="$53.520" FontAttributes="Bold"/>
+        <Label Grid.Row="1" Grid.Column="2" Text="Miles:"/>
+        <Label Grid.Row="1" Grid.Column="3" Text="56.23 m" FontAttributes="Bold"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="4"  Text="Toggle"/>
+        <ListView Grid.Row="3"/>
     </Grid>
 </ContentPage>
