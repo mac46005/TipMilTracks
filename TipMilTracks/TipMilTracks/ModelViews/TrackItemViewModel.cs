@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using TipMilTracks.Models;
+
+namespace TipMilTracks.ModelViews
+{
+    public class TrackItemViewModel : ViewModel
+    {
+        public event EventHandler ItemStatusChanged;
+
+
+        public TrackItemViewModel(TrackItemModel item)
+        {
+            TrackItem = item;
+        }
+
+        /// <summary>
+        /// The item object
+        /// </summary>
+        public TrackItemModel TrackItem { get; set; }
+        /// <summary>
+        /// Cell Color depending on the item type
+        /// </summary>
+        public string CellColor => "";
+        /// <summary>
+        /// String format dependning on the type of item
+        /// </summary>
+        public string ValueView => "";
+    }
+}
