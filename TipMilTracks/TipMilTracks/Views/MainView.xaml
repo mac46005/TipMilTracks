@@ -28,7 +28,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -43,6 +42,27 @@
         <Label Grid.Row="1" Grid.Column="2" Text="Miles:"/>
         <Label Grid.Row="1" Grid.Column="3" Text="56.23 m" FontAttributes="Bold"/>
         <Button Grid.Row="2" Grid.ColumnSpan="4"  Text="Toggle"/>
-        <ListView Grid.Row="3"/>
+
+
+
+        <ListView Grid.Row="3"
+                  Grid.ColumnSpan="4"
+                  ItemsSource="{Binding ItemsList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Item.ValueType}"/>
+                            <Label Text="{Binding Item.Value}" />
+                            <Label Text="{Binding Item.TimeStamp}" />
+                        </StackLayout>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
     </Grid>
 </ContentPage>

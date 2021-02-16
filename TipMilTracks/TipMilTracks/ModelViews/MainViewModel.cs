@@ -7,6 +7,8 @@ using System.Windows.Input;
 using TipMilTracks.Repositories;
 using TipMilTracks.Views;
 using Xamarin.Forms;
+using System.Linq;
+using TipMilTracks.Models;
 
 namespace TipMilTracks.ModelViews
 {
@@ -18,17 +20,27 @@ namespace TipMilTracks.ModelViews
             _repo = repo;
             Task.Run(async () => await LoadData());
 
-
+            _repo.OnItemAdded += (sender, item) => ItemsList.Add(CreateTrackItemViewModel(item));
+            _repo.OnItemUpdated += (sender, item) => Task.Run(async () => await LoadData());
+            _repo.OnItemDeleted += (sender, item) => Task.Run(async () => await LoadData());
         }
         public string CurrentDate { get; set; } = DateTime.Now.ToString("D");
         public ObservableCollection<TrackItemViewModel> ItemsList { get; set; }
         public string TotalT { get; set; }
         public string TotalM { get; set; }
-        private Task LoadData()
+        private async Task LoadData()
         {
-            return null;
-        }
+            var items = await _repo.GetItems();
+            var itemVM = items.Select(i => CreateTrackItemViewModel(i));
 
+            ItemsList = new ObservableCollection<TrackItemViewModel>(itemVM);
+        }
+        private TrackItemViewModel CreateTrackItemViewModel(TrackItemModel item)
+        {
+            var vm = new TrackItemViewModel(item);
+            //EVENTHANDLER ??
+            return vm;
+        }
 
         public ICommand AUD_Item => new Command(async () =>
         {
