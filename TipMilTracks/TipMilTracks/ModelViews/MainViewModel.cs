@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using TipMilTracks.Repositories;
@@ -14,6 +15,9 @@ namespace TipMilTracks.ModelViews
             _repo = repo;
             Task.Run(async () => await LoadData());
         }
+        public ObservableCollection<TrackItemViewModel> ItemsList { get; set; }
+        public string TotalT => "";
+        public string TotalM => "";
         private Task LoadData()
         {
             return null;
