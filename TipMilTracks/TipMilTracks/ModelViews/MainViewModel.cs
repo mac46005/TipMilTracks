@@ -14,13 +14,18 @@ namespace TipMilTracks.ModelViews
         {
             _repo = repo;
             Task.Run(async () => await LoadData());
+
+
         }
         public ObservableCollection<TrackItemViewModel> ItemsList { get; set; }
-        public string TotalT => "";
-        public string TotalM => "";
+        public string TotalT { get; set; }
+        public string TotalM { get; set; }
         private Task LoadData()
         {
             return null;
         }
+
+
+
     }
 }
