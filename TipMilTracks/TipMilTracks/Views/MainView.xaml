@@ -1,12 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TipMilTracks.Views.MainView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="TipMilTracks.Views.MainView"
+             Title="TipMilTracks">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"/>
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="2021"/>
+        <Label Grid.Row="1" Text="Total:"/>
+        <Label Grid.Row="1" Text="$53.520"/>
+        <Label Grid.Row="1" Text="Miles:"/>
+        <Label Grid.Row="1" Text="56.23 m"/>
+        <Button Text="Toggle"/>
+        <ListView/>
+    </Grid>
+
+
 </ContentPage>

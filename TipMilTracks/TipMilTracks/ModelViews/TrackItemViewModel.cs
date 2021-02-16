@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using TipMilTracks.Models;
+using TipMilTracks.Repositories;
 
 namespace TipMilTracks.ModelViews
 {
     public class TrackItemViewModel : ViewModel
     {
         public event EventHandler ItemStatusChanged;
-
 
         public TrackItemViewModel(TrackItemModel item)
         {
