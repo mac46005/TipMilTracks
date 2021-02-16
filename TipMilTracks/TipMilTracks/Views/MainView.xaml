@@ -21,6 +21,4 @@
         <Button Text="Toggle"/>
         <ListView/>
     </Grid>
-
-
 </ContentPage>
