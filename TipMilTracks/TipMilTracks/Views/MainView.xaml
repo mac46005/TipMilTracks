@@ -22,7 +22,6 @@
         </Style>
         <ResourceDictionary>
             <converters:ItemTypeColorConverter x:Key="itemTypeColorConverter"/>
-            <converters:ValueFormatConverter x:Key="valueFormatConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     

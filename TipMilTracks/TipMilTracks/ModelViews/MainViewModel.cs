@@ -44,7 +44,7 @@ namespace TipMilTracks.ModelViews
 
         public ICommand AUD_Item => new Command(async () =>
         {
-            var audView = Resolver.Resolve<AddUpdateDeleteView>();
+            var audView = Resolver.Resolve<AddUpdateView>();
             await Navigation.PushAsync(audView);
         });
     }

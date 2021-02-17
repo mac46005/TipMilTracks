@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TipMilTracks.Models;
@@ -52,7 +53,11 @@ namespace TipMilTracks.Repositories
         public async Task<List<TrackItemModel>> GetItems()
         {
             await CreateConnection();
-            return await _connection.Table<TrackItemModel>().ToListAsync();
+            var list = await _connection.Table<TrackItemModel>().ToListAsync();
+            var trackItemList = from i in list
+                                orderby i.TimeStamp descending
+                                select i;
+            return trackItemList.ToList();
         }
 
         public async Task AddItem(TrackItemModel item)

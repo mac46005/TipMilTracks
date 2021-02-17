@@ -8,10 +8,10 @@ using Xamarin.Forms;
 
 namespace TipMilTracks.ModelViews
 {
-    public class AddUpdateDeleteItemViewModel : ViewModel
+    public class AddUpdateItemViewModel : ViewModel
     {
         private readonly TrackItemRepository _repo;
-        public AddUpdateDeleteItemViewModel(TrackItemRepository repo)
+        public AddUpdateItemViewModel(TrackItemRepository repo)
         {
             _repo = repo;
             

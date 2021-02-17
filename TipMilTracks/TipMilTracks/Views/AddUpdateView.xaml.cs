@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace TipMilTracks.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddUpdateDeleteView : ContentPage
+    public partial class AddUpdateView : ContentPage
     {
-        public AddUpdateDeleteView(AddUpdateDeleteItemViewModel vm)
+        public AddUpdateView(AddUpdateItemViewModel vm)
         {
             InitializeComponent();
             vm.Navigation = Navigation;
