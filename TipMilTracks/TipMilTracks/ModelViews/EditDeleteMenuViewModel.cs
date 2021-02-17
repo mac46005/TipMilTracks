@@ -16,7 +16,7 @@ namespace TipMilTracks.ModelViews
             _repo = repo;
         }
         public TrackItemModel Item { get; set; }
-        ICommand DeleteItem => new Command(async () =>
+        public ICommand DeleteItem => new Command(async () =>
         {
             await _repo.DeleteItem(Item);
             await Navigation.PopToRootAsync();
