@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using TipMilTracks.Models;
 using TipMilTracks.Repositories;
+using TipMilTracks.Views;
 using Xamarin.Forms;
 
 namespace TipMilTracks.ModelViews
@@ -20,6 +21,13 @@ namespace TipMilTracks.ModelViews
         {
             await _repo.DeleteItem(Item);
             await Navigation.PopToRootAsync();
+        });
+        public ICommand Edit => new Command(async () =>
+        {
+            var editView = Resolver.Resolve<AddUpdateView>();
+            var viewContext = editView.BindingContext as AddUpdateItemViewModel;
+            viewContext.Item = Item;
+            await Navigation.PushAsync()
         });
     }
 }

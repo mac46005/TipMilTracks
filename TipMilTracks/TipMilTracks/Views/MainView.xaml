@@ -49,9 +49,9 @@
 
         <StackLayout Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalOptions="Center">
             <Label   Text="Total:"/>
-            <Label   Text="$53.520" FontAttributes="Bold"/>
+            <Label   Text="{Binding TotalTips}" FontAttributes="Bold"/>
             <Label   Text="Miles:"/>
-            <Label   Text="56.23 m" FontAttributes="Bold"/>
+            <Label   Text="{Binding TotalMiles}" FontAttributes="Bold"/>
         </StackLayout>
 
 
