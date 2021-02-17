@@ -61,7 +61,8 @@
 
 
         <ListView Grid.Row="3" RowHeight="70" Grid.ColumnSpan="4"
-                  ItemsSource="{Binding ItemsList}">
+                  ItemsSource="{Binding ItemsList}"
+                  SelectedItem="{Binding SelectedItem}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

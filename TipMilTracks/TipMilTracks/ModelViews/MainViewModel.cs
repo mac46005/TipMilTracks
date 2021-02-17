@@ -20,7 +20,7 @@ namespace TipMilTracks.ModelViews
             _repo = repo;
             Task.Run(async () => await LoadData());
 
-            _repo.OnItemAdded += (sender, item) => ItemsList.Add(CreateTrackItemViewModel(item));
+            _repo.OnItemAdded += (sender, item) => Task.Run(async () => await LoadData()); //ItemsList.Add(CreateTrackItemViewModel(item));
             _repo.OnItemUpdated += (sender, item) => Task.Run(async () => await LoadData());
             _repo.OnItemDeleted += (sender, item) => Task.Run(async () => await LoadData());
         }
@@ -47,5 +47,33 @@ namespace TipMilTracks.ModelViews
             var audView = Resolver.Resolve<AddUpdateView>();
             await Navigation.PushAsync(audView);
         });
+
+
+        public TrackItemViewModel SelectedItem
+        {
+            get => null;
+            set
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await NavigateToEditDeleteMenu(value);
+                    OnPropertyChanged(nameof(SelectedItem));
+                });
+            }
+        }
+
+        private async Task NavigateToEditDeleteMenu(TrackItemViewModel itemVM)
+        {
+            if (itemVM == null)
+            {
+                return;
+            }
+
+            var edVM = Resolver.Resolve<EditDeleteMenuView>();
+            var vm = edVM.BindingContext as EditDeleteMenuViewModel;
+            vm.Item = itemVM.TrackItem;
+            await Navigation.PushAsync(edVM);
+        }
+
     }
 }
