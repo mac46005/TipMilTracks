@@ -19,7 +19,7 @@ namespace TipMilTracks.Models
         /// <summary>
         /// Item type : tip / mile
         /// </summary>
-        public string Valuetype { get; set; }
+        public string ValueType { get; set; }
         /// <summary>
         /// TimeStamp of action completed
         /// </summary>

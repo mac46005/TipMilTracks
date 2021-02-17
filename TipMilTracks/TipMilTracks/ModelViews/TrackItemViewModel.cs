@@ -22,10 +22,6 @@ namespace TipMilTracks.ModelViews
         /// <summary>
         /// Cell Color depending on the item type
         /// </summary>
-        public string CellColor => "";
-        /// <summary>
-        /// String format dependning on the type of item
-        /// </summary>
-        public string ValueView => "";
+        public string ValueView => (TrackItem.ValueType == "Tip")? $"{TrackItem.Value:C}": $"{TrackItem.Value} miles";
     }
 }

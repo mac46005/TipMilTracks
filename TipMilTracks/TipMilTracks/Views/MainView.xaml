@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TipMilTracks"
+             xmlns:converters="clr-namespace:TipMilTracks.Converters"
              x:Class="TipMilTracks.Views.MainView"
              Title="TipMilTracks">
     <ContentPage.Resources>
@@ -19,10 +20,19 @@
             <Setter Property="FontAttributes"
                     Value="Bold"/>
         </Style>
+        <ResourceDictionary>
+            <converters:ItemTypeColorConverter x:Key="itemTypeColorConverter"/>
+            <converters:ValueFormatConverter x:Key="valueFormatConverter"/>
+        </ResourceDictionary>
     </ContentPage.Resources>
+    
+    
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AUD_Item}"/>
     </ContentPage.ToolbarItems>
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -30,33 +40,47 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label Text="{Binding CurrentDate}" Grid.ColumnSpan="4"/>
-        <Label Grid.Row="1" Grid.Column="0" Text="Total:"/>
-        <Label Grid.Row="1" Grid.Column="1" Text="$53.520" FontAttributes="Bold"/>
-        <Label Grid.Row="1" Grid.Column="2" Text="Miles:"/>
-        <Label Grid.Row="1" Grid.Column="3" Text="56.23 m" FontAttributes="Bold"/>
+        </Grid.ColumnDefinitions>-->
+        <Label Text="{Binding CurrentDate}" Grid.ColumnSpan="4" HorizontalTextAlignment="Center"/>
+
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalOptions="Center">
+            <Label   Text="Total:"/>
+            <Label   Text="$53.520" FontAttributes="Bold"/>
+            <Label   Text="Miles:"/>
+            <Label   Text="56.23 m" FontAttributes="Bold"/>
+        </StackLayout>
+
+
+
         <Button Grid.Row="2" Grid.ColumnSpan="4"  Text="Toggle"/>
 
 
 
-        <ListView Grid.Row="3"
-                  Grid.ColumnSpan="4"
+        <ListView Grid.Row="3" RowHeight="70" Grid.ColumnSpan="4"
                   ItemsSource="{Binding ItemsList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding Item.ValueType}"/>
-                            <Label Text="{Binding Item.Value}" />
-                            <Label Text="{Binding Item.TimeStamp}" />
-                        </StackLayout>
-
+                        <Grid BackgroundColor="{Binding TrackItem.ValueType,Converter={StaticResource itemTypeColorConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding TrackItem.ValueType}" Grid.Row="0" Grid.Column="0" />
+                            <Label Text="{Binding ValueView}" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="TimeStamp" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="{Binding TrackItem.TimeStamp}" Grid.Row="1" Grid.Column="1" />
+                        </Grid>
+                        <!--<StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding TrackItem.ValueType}"  />
+                            <Label Text="{Binding TrackItem.Value}" />
+                            <Label Text="{Binding TrackItem.TimeStamp}" />
+                        </StackLayout>-->
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
