@@ -49,7 +49,7 @@
 
 
 
-        <Button Grid.Row="2" Grid.ColumnSpan="4"  Text="Toggle"
+        <Button Grid.Row="2" Grid.ColumnSpan="4"  Text="{Binding ToggleString}"
                 Command="{Binding ToggleCommand}"/>
         
         

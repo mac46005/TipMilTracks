@@ -37,6 +37,7 @@ namespace TipMilTracks.ModelViews
         /// A list of TrackItemViewModels used for the viewList
         /// </summary>
         public ObservableCollection<TrackItemViewModel> ItemsList { get; set; }
+        public ObservableCollection<TrackItemViewModel> CurrentList { get; set; }
 
         /// <summary>
         /// Added tips from repo trackitem object value
@@ -57,7 +58,8 @@ namespace TipMilTracks.ModelViews
             var items = await _repo.GetItems();
             var itemVM = items.Select(i => CreateTrackItemViewModel(i));
 
-            ItemsList = new ObservableCollection<TrackItemViewModel>(itemVM);
+            CurrentList = new ObservableCollection<TrackItemViewModel>(itemVM);
+            ItemsList = CurrentList;
             SetTotalStrings();
         }
 
@@ -143,37 +145,44 @@ namespace TipMilTracks.ModelViews
 
         //Toggle Function
 
-        public static string ToggleString { get; set; } = "All";
-        static string[] toggleNames = { "All", "Tips", "Miles" };
-        static int count = 0;
+        public string ToggleString { get; set; } = "All";
+        string[] toggleNames = { "All", "Tips", "Miles" };
         public ICommand ToggleCommand => new Command(async () =>
         {
-            count++;
-            if (count == 2)
+            if (ToggleString == toggleNames[0])
             {
-                ToggleString = toggleNames[count];
+                ToggleString = toggleNames[1];
                 await ToggleFunction();
-                count = 0;
+                return;
             }
-            else
+            else if (ToggleString == toggleNames[1])
             {
-                ToggleString = toggleNames[count];
+                ToggleString = toggleNames[2];
+                await ToggleFunction();
+                return;
+            }
+            else if (ToggleString == toggleNames[2])
+            {
+                ToggleString = toggleNames[0]; 
+                await ToggleFunction();
+                return;
             }
         });
         private async Task ToggleFunction()
         {
+            ItemsList = CurrentList;
             if (ToggleString == toggleNames[0])
             {
-                await LoadData();
+                await LoadData();//HMMMMM
             }
             else if (ToggleString == toggleNames[1])
             {
-                var tipsList = ItemsList.Select(x => (x.TrackItem.ValueType == "Tip")? x : null);
+                var tipsList = CurrentList.Select(x => (x.TrackItem.ValueType == "Tip")? x : null);
                 ItemsList = new ObservableCollection<TrackItemViewModel>(tipsList);
             }
             else
             {
-                var milesList = ItemsList.Select(x => (x.TrackItem.ValueType == "MIles") ? x : null);
+                var milesList = CurrentList.Select(x => (x.TrackItem.ValueType == "Miles") ? x : null);
                 ItemsList = new ObservableCollection<TrackItemViewModel>(milesList);
             }
         }
