@@ -170,7 +170,6 @@ namespace TipMilTracks.ModelViews
         });
         private async Task ToggleFunction()
         {
-            ItemsList = CurrentList;
             if (ToggleString == toggleNames[0])
             {
                 await LoadData();//HMMMMM
