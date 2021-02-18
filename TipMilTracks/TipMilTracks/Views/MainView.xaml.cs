@@ -17,6 +17,8 @@ namespace TipMilTracks.Views
             InitializeComponent();
             vm.Navigation = Navigation;
             BindingContext = vm;
+            TrackItemViewModelListView.ItemSelected += (s, e) => TrackItemViewModelListView.SelectedItem = null;
+
         }
     }
 }

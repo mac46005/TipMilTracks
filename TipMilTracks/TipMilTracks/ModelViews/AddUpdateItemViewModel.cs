@@ -14,15 +14,25 @@ namespace TipMilTracks.ModelViews
         public AddUpdateItemViewModel(TrackItemRepository repo)
         {
             _repo = repo;
-            
+
         }
 
         public TrackItemModel Item { get; set; } = new TrackItemModel();
 
         public ICommand Save => new Command(async () =>
         {
-            await _repo.AddOrUpdateItem(Item);
-            await Navigation.PopAsync();
+            if (Item.Id == 0)
+            {
+                await _repo.AddItem(Item);
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                await _repo.AddOrUpdateItem(Item);
+                await Navigation.PopToRootAsync();
+            }
+
+
         });
     }
 }

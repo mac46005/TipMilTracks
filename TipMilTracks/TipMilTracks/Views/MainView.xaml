@@ -16,10 +16,6 @@
             <Setter Property="HorizontalOptions"
                     Value="Center"/>
         </Style>
-        <Style x:Key="Values" TargetType="Label">
-            <Setter Property="FontAttributes"
-                    Value="Bold"/>
-        </Style>
         <ResourceDictionary>
             <converters:ItemTypeColorConverter x:Key="itemTypeColorConverter"/>
         </ResourceDictionary>
@@ -39,48 +35,42 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>-->
+        
+        
+        
         <Label Text="{Binding CurrentDate}" Grid.ColumnSpan="4" HorizontalTextAlignment="Center"/>
 
         <StackLayout Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalOptions="Center">
             <Label   Text="Total:"/>
-            <Label   Text="{Binding TotalTips}" FontAttributes="Bold"/>
+            <Label   Text="{Binding TotalTips}" FontAttributes="Bold" TextColor="Green"/>
             <Label   Text="Miles:"/>
-            <Label   Text="{Binding TotalMiles}" FontAttributes="Bold"/>
+            <Label   Text="{Binding TotalMiles}" FontAttributes="Bold" TextColor="Red"/>
         </StackLayout>
 
 
 
         <Button Grid.Row="2" Grid.ColumnSpan="4"  Text="Toggle"/>
-
-
-
-        <ListView Grid.Row="3" RowHeight="70" Grid.ColumnSpan="4"
+        
+        
+        
+        <!--      LIST OF TRACKITEMVIEWMODELS                -->
+        <ListView x:Name="TrackItemViewModelListView" 
+            Grid.Row="3" RowHeight="70" Grid.ColumnSpan="4"
                   ItemsSource="{Binding ItemsList}"
                   SelectedItem="{Binding SelectedItem}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid BackgroundColor="{Binding TrackItem.ValueType,Converter={StaticResource itemTypeColorConverter}}">
+                        <Grid BackgroundColor="{Binding TrackItem.ValueType,Converter={StaticResource itemTypeColorConverter}}" Padding="5,0,5,0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding TrackItem.ValueType}" Grid.Row="0" Grid.Column="0" />
-                            <Label Text="{Binding ValueView}" Grid.Row="1" Grid.Column="0" />
-                            <Label Text="TimeStamp" Grid.Row="0" Grid.Column="1"/>
-                            <Label Text="{Binding TrackItem.TimeStamp}" Grid.Row="1" Grid.Column="1" />
+                            <Label Text="{Binding TrackItem.ValueType}" Grid.Row="0" Grid.Column="0" TextColor="Black" />
+                            <Label Text="{Binding ValueView}" Grid.Row="1" Grid.Column="0" TextColor="Black" />
+                            <Label Text="TimeStamp" Grid.Row="0" Grid.Column="1" TextColor="Black" />
+                            <Label Text="{Binding TrackItem.TimeStamp}" Grid.Row="1" Grid.Column="1" TextColor="Black" />
                         </Grid>
-                        <!--<StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding TrackItem.ValueType}"  />
-                            <Label Text="{Binding TrackItem.Value}" />
-                            <Label Text="{Binding TrackItem.TimeStamp}" />
-                        </StackLayout>-->
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

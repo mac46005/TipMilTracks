@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TipMilTracks.App">
     <Application.Resources>
-        <Color x:Key="TipColor">LightGreen</Color>
-        <Color x:Key="MileColor">LightBlue</Color>
+        <Color x:Key="TipColor">Teal</Color>
+        <Color x:Key="MileColor">Blue</Color>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor"
+                    Value="OrangeRed"/>
+        </Style>
     </Application.Resources>
 </Application>
