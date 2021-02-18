@@ -140,5 +140,42 @@ namespace TipMilTracks.ModelViews
             TotalTips = $"{tipAmount:C}";
             TotalMiles = $"{mileAmount} m";
         }
+
+        //Toggle Function
+
+        public static string ToggleString { get; set; } = "All";
+        static string[] toggleNames = { "All", "Tips", "Miles" };
+        static int count = 0;
+        public ICommand ToggleCommand => new Command(async () =>
+        {
+            count++;
+            if (count == 2)
+            {
+                ToggleString = toggleNames[count];
+                await ToggleFunction();
+                count = 0;
+            }
+            else
+            {
+                ToggleString = toggleNames[count];
+            }
+        });
+        private async Task ToggleFunction()
+        {
+            if (ToggleString == toggleNames[0])
+            {
+                await LoadData();
+            }
+            else if (ToggleString == toggleNames[1])
+            {
+                var tipsList = ItemsList.Select(x => (x.TrackItem.ValueType == "Tip")? x : null);
+                ItemsList = new ObservableCollection<TrackItemViewModel>(tipsList);
+            }
+            else
+            {
+                var milesList = ItemsList.Select(x => (x.TrackItem.ValueType == "MIles") ? x : null);
+                ItemsList = new ObservableCollection<TrackItemViewModel>(milesList);
+            }
+        }
     }
 }
